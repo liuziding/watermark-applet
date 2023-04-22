@@ -1,0 +1,34 @@
+{
+  "pages": [
+    "pages/ancientry/ancientry",
+    "pages/my/my"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#9E9E9E",
+    "selectedColor": "#418DE8",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/ancientry/ancientry",
+        "text": "去水印",
+        "iconPath": "/static/images/tabbar/watermark.png",
+        "selectedIconPath": "/static/images/tabbar/watermark_active.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "/static/images/tabbar/my.png",
+        "selectedIconPath": "/static/images/tabbar/my_active.png"
+      }
+    ]
+  },
+  "usingComponents": {}
+}
