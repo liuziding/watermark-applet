@@ -3,5 +3,6 @@
   "projectname": "watermark-applet",
   "setting": {
     "compileHotReLoad": true
-  }
+  },
+  "libVersion": "2.29.2"
 }

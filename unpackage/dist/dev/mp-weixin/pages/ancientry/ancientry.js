@@ -296,7 +296,6 @@ var _base = _interopRequireDefault(__webpack_require__(/*! @/utils/base64.js */ 
 //
 //
 //
-//
 
 var timeout = null;
 var _default = {
@@ -322,11 +321,11 @@ var _default = {
       // 原始盒子宽度
       originalHeight: 0,
       // 原始盒子高度
-      originalImage: null,
+      originalImage: "",
       // 原始图片地址
-      generatedImage: null,
+      generatedImage: "",
       // 去水印后的图片
-      qrcode: null,
+      qrcode: "",
       imgScale: 1
     };
   },
@@ -397,8 +396,8 @@ var _default = {
         // 从相册选择
         success: function success(res) {
           that.originalImage = res.tempFilePaths[0];
-          that.generatedImage = null;
-          that.qrcode = null;
+          that.generatedImage = "";
+          that.qrcode = "";
           setTimeout(function () {
             // 获取图片宽高
             uni.getImageInfo({
@@ -432,9 +431,9 @@ var _default = {
     },
     // 获取授权判断是否授权相册
     getSaveImg: function getSaveImg() {
-      var _this = this;
+      debugger;
       var that = this;
-      if (that.originalImage) {
+      if (that.generatedImage) {
         uni.getSetting({
           success: function success(res) {
             if (!res.authSetting["scope.writePhotosAlbum"]) {
@@ -447,7 +446,7 @@ var _default = {
                       scope: 'scope.writePhotosAlbum',
                       success: function success() {
                         // 用户已经同意
-                        that.saveImgToAlbum(this.qrcode);
+                        that.saveImgToAlbum();
                       },
                       fail: function fail(err) {
                         console.log('用户拒绝授权相册');
@@ -457,7 +456,7 @@ var _default = {
                 }
               });
             } else {
-              that.saveImgToAlbum(_this.qrcode);
+              that.saveImgToAlbum();
             }
           },
           fail: function fail() {
@@ -477,7 +476,7 @@ var _default = {
       fileManager.writeFile({
         filePath: wx.env.USER_DATA_PATH + '/img.jpg',
         // 指定图片的临时路径
-        data: this.qrcode,
+        data: this.generatedImage,
         // 要写入的文本或二进制数据
         encoding: 'base64',
         // 指定写入文件的字符编码
@@ -505,39 +504,36 @@ var _default = {
     },
     //把base64转换成图片
     getBase64ImageUrl: function getBase64ImageUrl(base64Url) {
-      console.log('==========');
-      console.log(base64Url);
-      var that = this;
-      that.qrcode = base64Url;
-      //拿到后端给的base64字符串
-      var shareQrImg = "data:image/jpg;base64," + base64Url;
-      (0, _base.default)(shareQrImg, function (resCurrent) {
-        that.generatedImage = resCurrent;
-      });
+      // 获取到base64Data
+      var base64Data = base64Url;
+      // 通过微信小程序自带方法将base64转为二进制去除特殊符号，再转回base64
+      base64Data = uni.arrayBufferToBase64(uni.base64ToArrayBuffer(base64Data));
+      // 拼接请求头，data格式可以为image/png或者image/jpeg等，看需求
+      // const base64ImgUrl = "data:image/png;base64," + base64Data;
+      this.generatedImage = base64Data;
+
+      // console.log('==========');
+      // console.log(base64Url);
+      // let that = this;
+      // that.qrcode = base64Url;
+      // //拿到后端给的base64字符串
+      // this.generatedImage = base64Url;// "data:image/jpg;base64," + base64Url;
+      // // var shareQrImg = `data:image/jpg;base64,` + base64Url;
+      // // base64src(shareQrImg, resCurrent => {
+      // // 	console.log('1111111');
+      // // 	console.log(resCurrent);
+      // // 		that.generatedImage = resCurrent;
+      // // });
     },
     // 移动矩形框触发的方法
     movableChange: function movableChange(e) {
-      var that = this;
-      if (timeout) {
-        clearInterval(timeout);
-        timeout = null;
-      }
-      timeout = setTimeout(function () {
-        that.x = e.detail.x; // 矩形框x坐标
-        that.y = e.detail.y; // 矩形框y坐标
-      }, 200);
+      this.x = e.detail.x; // 矩形框x坐标
+      this.y = e.detail.y; // 矩形框y坐标
     },
     // 矩形框缩放触发的方法
     movableScale: function movableScale(e) {
-      var that = this;
-      if (timeout) {
-        clearInterval(timeout);
-        timeout = null;
-      }
-      timeout = setTimeout(function () {
-        that.x = e.detail.x; // 矩形框x坐标
-        that.y = e.detail.y; // 矩形框y坐标
-      }, 200);
+      this.x = e.detail.x; // 矩形框x坐标
+      this.y = e.detail.y; // 矩形框y坐标
     },
     // 去水印
     removeWaterMark: function removeWaterMark() {
@@ -565,10 +561,14 @@ var _default = {
     // 生成去水印的图片
     handleRemoveWaterMark: function handleRemoveWaterMark(imageBase64) {
       var that = this;
-      debugger;
       var access_token = uni.getStorageSync("access_token");
-      var info = uni.createSelectorQuery().in(this).select(".movableView");
-      info.boundingClientRect(function (el) {
+      debugger;
+      console.log(this.$refs.movableArea);
+      // let info = uni.createSelectorQuery().in("#movableArea").select(".movableView");
+      uni.createSelectorQuery().in(this.$parent).select(".movableView").boundingClientRect(function (el) {
+        console.log(el);
+        debugger;
+        // info.boundingClientRect(function(el) {
         var width = el.width;
         var height = el.height;
         uni.showLoading({
@@ -605,9 +605,7 @@ var _default = {
             });
           }
         });
-      }).exec(function (res) {
-        // 注意：exec方法必须执行，即便什么也不做，否则不会获取到任何数据
-      });
+      }).exec();
       // uni.createSelectorQuery()
       // 		.select(".movableView")
       // 		.fields({ node: true, size: true })
