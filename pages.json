@@ -1,5 +1,11 @@
 {
 	"pages": [{
+		"path": "pages/home/home",
+		"style": {
+			"navigationBarTitleText": "去水印",
+			"enablePullDownRefresh": false
+		}
+	}, {
 		"path": "pages/ancientry/ancientry",
 		"style": {
 			"navigationBarTitleText": "去水印",
@@ -8,9 +14,46 @@
 	}, {
 		"path": "pages/my/my",
 		"style": {
-			"navigationBarTitleText": "我的",
+			"navigationBarTitleText": "关于",
+			"navigationBarBackgroundColor": "#799bfd",
+			"navigationBarTextStyle": "white",
 			"enablePullDownRefresh": false
 		}
+	}],
+	
+	"subPackages": [{
+		"root": "pageA",
+		"pages": [{
+			"path": "privacyPolicy/privacyPolicy",
+			"style": {
+				"navigationBarTitleText": "隐私政策",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "videoLine/videoLine",
+			"style": {
+				"navigationBarTitleText": "视频去水印",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "nineGridCut/nineGridCut",
+			"style": {
+				"navigationBarTitleText": "九宫格切图",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "imageLine/imageLine",
+			"style": {
+				"navigationBarTitleText": "图片去水印",
+				"enablePullDownRefresh": false
+      }
+    }, {
+			"path": "imageLocal/imageLocal",
+			"style": {
+				"navigationBarTitleText": "相册图片去水印",
+				"enablePullDownRefresh": false
+      }
+    }]
 	}],
 	
 	"tabBar": {
@@ -19,13 +62,13 @@
 		"borderStyle": "black",
 		"backgroundColor": "#ffffff",
 		"list": [{
-			"pagePath": "pages/ancientry/ancientry",
+			"pagePath": "pages/home/home",
 			"text": "去水印",
 			"iconPath": "/static/images/tabbar/watermark.png",
 			"selectedIconPath": "/static/images/tabbar/watermark_active.png"
 		}, {
 			"pagePath": "pages/my/my",
-			"text": "我的",
+			"text": "关于",
 			"iconPath": "/static/images/tabbar/my.png",
 			"selectedIconPath": "/static/images/tabbar/my_active.png"
 		}]

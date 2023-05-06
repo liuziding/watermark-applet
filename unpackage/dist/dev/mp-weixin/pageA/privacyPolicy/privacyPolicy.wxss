@@ -1,0 +1,34 @@
+@charset "UTF-8";
+/* 水平间距 */
+/* 水平间距 */
+view.data-v-76718bca {
+  font-size: 24rpx;
+}
+.main.data-v-76718bca {
+  padding: 32rpx;
+}
+.main .title.data-v-76718bca {
+  font-size: 32rpx;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+.main .section.data-v-76718bca {
+  text-indent: 2em;
+  text-align: left;
+}
+.main .marginB.data-v-76718bca {
+  margin-bottom: 20rpx;
+}
+.main .tag.data-v-76718bca {
+  font-size: 30rpx;
+  text-align: left;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  margin-top: 20rpx;
+}
+.main .end.data-v-76718bca {
+  margin-top: 20rpx;
+  margin-bottom: 40rpx;
+}
+

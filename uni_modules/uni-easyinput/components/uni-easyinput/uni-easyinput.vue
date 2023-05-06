@@ -534,6 +534,7 @@ $uni-border-1: #dcdfe6 !default;
 	text-align: left;
 	color: #333;
 	font-size: 14px;
+	background-color: #FFF;
 }
 
 .uni-easyinput__content {

@@ -1,9 +1,21 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/ancientry/ancientry",
     "pages/my/my"
   ],
-  "subPackages": [],
+  "subPackages": [
+    {
+      "root": "pageA",
+      "pages": [
+        "privacyPolicy/privacyPolicy",
+        "videoLine/videoLine",
+        "nineGridCut/nineGridCut",
+        "imageLine/imageLine",
+        "imageLocal/imageLocal"
+      ]
+    }
+  ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",
@@ -17,18 +29,19 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/ancientry/ancientry",
+        "pagePath": "pages/home/home",
         "text": "去水印",
         "iconPath": "/static/images/tabbar/watermark.png",
         "selectedIconPath": "/static/images/tabbar/watermark_active.png"
       },
       {
         "pagePath": "pages/my/my",
-        "text": "我的",
+        "text": "关于",
         "iconPath": "/static/images/tabbar/my.png",
         "selectedIconPath": "/static/images/tabbar/my_active.png"
       }
     ]
   },
+  "lazyCodeLoading": "requiredComponents",
   "usingComponents": {}
 }
