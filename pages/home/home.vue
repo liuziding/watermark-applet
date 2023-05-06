@@ -6,7 +6,8 @@
 				<swiper class="swiper-box" @change="change" :current="swiperDotIndex">
 					<swiper-item v-for="(item, index) in info" :key="index">
 						<view class="swiper-item">
-							<image :src="item.url" mode="aspectFit" />
+							<!-- <view class="image" :style="{backgroundColor: item.backgroundColor}"></view> -->
+							<image :src="item.url" />
 						</view>
 					</swiper-item>
 				</swiper>
@@ -61,13 +62,16 @@
 			return {
 				info: [{
 					url: 'https://web-assets.dcloud.net.cn/unidoc/zh/shuijiao.jpg',
-					content: '内容 A'
+					content: '内容 A',
+					backgroundColor: '#E11A1A'
 				}, {
 					url: 'https://web-assets.dcloud.net.cn/unidoc/zh/shuijiao.jpg',
-					content: '内容 B'
+					content: '内容 B',
+					backgroundColor: '#1AE131'
 				}, {
 					url: 'https://web-assets.dcloud.net.cn/unidoc/zh/shuijiao.jpg',
-					content: '内容 C'
+					content: '内容 C',
+					backgroundColor: '#341AE1'
 				}],
 				current: 0,
 				swiperDotIndex: 0
@@ -152,10 +156,10 @@
 
 <style lang="scss" scoped>
 	.content {
-		margin: 0 16rpx;
+		margin: 0 24rpx;
 	}
 	.swiper-box {
-			min-height: 220px;
+			height: 300rpx;
 		}
 	
 		.swiper-item {
@@ -163,50 +167,14 @@
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			min-height: 220px;
+			min-height: 300rpx;
 			color: #fff;
+			image {
+				width: 100%;
+				height: 300rpx;
+			}
 		}
-	
-		.example-body {
-			/* #ifndef APP-NVUE */
-			display: flex;
-			/* #endif */
-			flex-direction: row;
-			// padding: 20rpx;
-		}
-	
-		.example-body-item {
-	
-			flex-direction: row;
-			justify-content: center;
-			align-items: center;
-			// margin: 15rpx;
-			// padding: 15rpx;
-			height: 60rpx;
-			/* #ifndef APP-NVUE */
-			display: flex;
-			// padding: 0 15rpx;
-			/* #endif */
-			flex: 1;
-			border-color: #e5e5e5;
-			border-style: solid;
-			border-width: 1px;
-			border-radius: 5px;
-		}
-	
-		.example-body-item-text {
-			font-size: 28rpx;
-			color: #333;
-		}
-	
-		.example-body-dots {
-			width: 16rpx;
-			height: 16rpx;
-			border-radius: 50px;
-			background-color: #333333;
-			margin-left: 10rpx;
-		}
-	
+
 		.active {
 			border-style: solid;
 			border-color: #007aff;

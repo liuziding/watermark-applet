@@ -6,12 +6,6 @@
 			"enablePullDownRefresh": false
 		}
 	}, {
-		"path": "pages/ancientry/ancientry",
-		"style": {
-			"navigationBarTitleText": "去水印",
-			"enablePullDownRefresh": false
-		}
-	}, {
 		"path": "pages/my/my",
 		"style": {
 			"navigationBarTitleText": "关于",

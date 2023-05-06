@@ -709,5 +709,5 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ })
 
-},[[102,"common/runtime","common/vendor"]]]);
+},[[102,"common/runtime","common/vendor","pageA/common/vendor"]]]);
 //# sourceMappingURL=../../../.sourcemap/mp-weixin/pageA/imageLocal/imageLocal.js.map

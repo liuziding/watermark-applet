@@ -221,18 +221,22 @@ exports.default = void 0;
 //
 //
 //
+//
 var _default = {
   data: function data() {
     return {
       info: [{
         url: 'https://web-assets.dcloud.net.cn/unidoc/zh/shuijiao.jpg',
-        content: '内容 A'
+        content: '内容 A',
+        backgroundColor: '#E11A1A'
       }, {
         url: 'https://web-assets.dcloud.net.cn/unidoc/zh/shuijiao.jpg',
-        content: '内容 B'
+        content: '内容 B',
+        backgroundColor: '#1AE131'
       }, {
         url: 'https://web-assets.dcloud.net.cn/unidoc/zh/shuijiao.jpg',
-        content: '内容 C'
+        content: '内容 C',
+        backgroundColor: '#341AE1'
       }],
       current: 0,
       swiperDotIndex: 0
